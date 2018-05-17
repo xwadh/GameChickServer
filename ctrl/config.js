@@ -45,7 +45,6 @@ class config extends baseCtl {
      */
     async getServerInfo(pUser, info){
         try{
-            console.log('index req:', info);
             //优先路由:强制切换到Test域
             if(this.parent.testRoute.has(info.oemInfo.openid)){
                 info.oemInfo.domain = info.oemInfo.domain.replace(/IOS/g, "Test").replace(/Android/g, "Test");
@@ -57,7 +56,6 @@ class config extends baseCtl {
                 //向目标逻辑服发送预登录信息
                 let ret = await this.parent.remoteCallReturn(ui, "userPreLogin", info.oemInfo);
                 if(ret.code == this.parent.const.ReturnCode.Success){
-                    console.log('userPreLogin:', ret);
                     return {
                         code: this.parent.const.ReturnCode.Success,
                         //注意：返回的是服务器的mapping地址
