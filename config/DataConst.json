@@ -1,0 +1,43 @@
+{
+  "user":{
+      "icon":"http://thirdapp2.qlogo.cn/qzopenapp/7e23615195608a7d203b1027a1926f5f318f2a75cb5c15f0d3bcfe413e46ccbb/50"
+  },
+  "pvp" : {
+      "attackBonus" : 100000,
+      "destroyBonus": 300000,
+      "stealRate": 0.7
+  },
+  "threshold": {
+      "moneyOfRich" : 350000,
+      "moneyOfBeAttacked": 100000,
+      "moneyOfInit": 0,
+      "rankNumber": 50,
+      "oneDay": 30,
+      "desc": "阈值设定"
+  },
+  "action":{
+    "init": 20,
+    "max": 60,
+    "iHourSecond": 360,
+    "add": 1,
+    "desc": "max:最大体力值，受科技影响 iHourSecond:恢复周期，默认360秒 add:每个周期恢复点数"
+  },
+  "slave":{
+    "catchTime":172800
+  },
+  "Execute":{
+    "AE_Login":{"num":1, "cd":0},
+    "AE_SocialOfFail":{"num":3, "cd":0},
+    "AE_SocialOfAction":{"num":3, "cd":0},
+    "AE_SocialOfSuper":{"num":10, "cd":0},
+    "AE_SlaveCatch":{"num":6, "cd":0},
+    "AE_SlaveEscape":{"num":5, "cd":0},
+    "slaveFood": {"num":24, "cd":0},
+    "slaveAvenge": {"num":24, "cd":600},
+    "slaveFlattery": {"num":24, "cd":0},
+    "slaveCommend": {"num":24, "cd":600},
+    "slaveLash": {"num":24, "cd":0},
+    "vipDaily": {"num":1, "cd":0},
+    "desc":"受控行为类型，所谓受控行为就是每天只能执行一定次数的行为，AE_SocialOfSuper 超越好友得奖励行为 AE_Login 每日登录行为"
+  }
+}

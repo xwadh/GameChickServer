@@ -1,0 +1,1 @@
+update users set pet = replace(pet, 'http://127.0.0.1', 'https://server.jxd.173kw.com');

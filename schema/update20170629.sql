@@ -1,0 +1,8 @@
+ALTER TABLE `users`
+	CHANGE COLUMN `vip` `vip` VARCHAR(2000) NULL DEFAULT NULL AFTER `item`,
+	CHANGE COLUMN `name` `name` VARCHAR(500) NOT NULL DEFAULT 'player' AFTER `score`,
+	CHANGE COLUMN `info` `info` VARCHAR(800) NULL DEFAULT NULL AFTER `uuid`,
+	DROP COLUMN `qiPan`,
+	DROP COLUMN `homeland`,
+	DROP COLUMN `build`,
+	DROP COLUMN `fuchou`;

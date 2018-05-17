@@ -1,0 +1,35 @@
+[
+	{
+		"id":1,
+		"pic":"ui/shop/tilitubiao01",
+		"name":"10体力礼包",
+		"desc":"",
+		"price":6,
+		"isSelling":false,
+		"isCostEffective":false,
+		"isShowInShop":true,
+		"itemTag":{"type":"A", "num":"10"}
+	},
+	{
+		"id":7,
+		"pic":"ui/shop/jinbitubiao01",
+		"name":"300000金币",
+		"desc":"",
+		"price":6,
+		"isSelling":false,
+		"isCostEffective":false,
+		"isShowInShop":true,
+		"itemTag":{"type":"M", "num":"300000"}
+	},
+	{
+		"id":13,
+		"pic":"ui/shop/yueka",
+		"name":"30天vip卡",
+		"desc":"每小时体力恢复8",
+		"price":30,
+		"isSelling":true,
+		"isCostEffective":false,
+		"isShowInShop":true,
+		"itemTag":{"type":"V", "num":"30"}
+	}
+]

@@ -1,0 +1,62 @@
+-- --------------------------------------------------------
+-- 主机:                           192.168.1.21
+-- 服务器版本:                        5.5.15 - MySQL Community Server (GPL)
+-- 服务器操作系统:                      Win32
+-- HeidiSQL 版本:                  8.2.0.4675
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+ALTER TABLE `users`
+	CHANGE COLUMN `login` `login` VARCHAR(2000) NULL DEFAULT NULL AFTER `friend`;
+
+ALTER TABLE `users`
+	CHANGE COLUMN `name` `name` VARCHAR(200) NOT NULL DEFAULT 'player' AFTER `score`;
+
+-- 导出  表 chick_ios_1.login 结构
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE IF NOT EXISTS `login` (
+  `uid` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `time` varchar(50) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 数据导出被取消选择。
+
+
+-- 导出  过程 chick_ios_1.survive 结构
+DROP PROCEDURE IF EXISTS `survive`;
+DELIMITER //
+CREATE PROCEDURE `survive`(IN `time` VARCHAR(50), OUT `r1` FLOAT, OUT `r3` FLOAT, OUT `r7` FLOAT)
+BEGIN
+	declare a int;
+	declare b1 int;
+	declare b3 int;
+	declare b7 int;
+
+	select count(id) into a from users where createdAt >= time and createdAt < DATE_ADD(time,INTERVAL 1 DAY);
+
+	IF (a = 0) THEN
+		set r1 = 0;
+		set r3 = 0;
+		set r7 = 0;
+	ELSE
+		select count(*) into b1 from login where type = 1 and uid in (select id from users where createdAt >= time and createdAt < DATE_ADD(time, INTERVAL 1 DAY));
+		select count(*) into b3 from login where type = 3 and uid in (select id from users where createdAt >= time and createdAt < DATE_ADD(time, INTERVAL 1 DAY));
+		select count(*) into b7 from login where type = 7 and uid in (select id from users where createdAt >= time and createdAt < DATE_ADD(time, INTERVAL 1 DAY));
+		set r1 = b1 / a;
+		set r3 = b3 / a;
+		set r7 = b7 / a;
+	END IF;
+
+	select r1, r3, r7;
+END//
+DELIMITER ;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,0 +1,2 @@
+ALTER TABLE `users`
+	CHANGE COLUMN `txFriend` `txFriend` VARCHAR(3200) NULL DEFAULT NULL AFTER `txBule`;

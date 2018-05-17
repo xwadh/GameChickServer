@@ -1,0 +1,2 @@
+ALTER TABLE `users`
+	ADD COLUMN `score` INT(11) NOT NULL DEFAULT '0' AFTER `id`;

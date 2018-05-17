@@ -1,0 +1,37 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": [
+      "config/", 
+      "const/", 
+      "ctrl/", 
+      "events/", 
+      "facade/", 
+      "logic/", 
+      "middleware/", 
+      "model/", 
+      "modelAssistant/", 
+      "router/", 
+      "service/", 
+      "util/"
+    ],
+    "exclude": [],
+    "includePattern": ".+\\.js(doc)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "opts": {
+    "template": "templates/default",
+    "encoding": "utf8",
+    "destination": "./docs/reference",
+    "recurse": true,
+    "private": true,
+    "pedantic": true
+  }
+}
